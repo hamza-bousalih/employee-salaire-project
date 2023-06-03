@@ -1,0 +1,43 @@
+<section *ngIf="mandats.length > 0">
+  <div>
+    <h3 class="section-title">responsibilities: {{mandats.length}}</h3>
+  </div>
+  <div class="table-container">
+
+    <table class="table">
+      <thead>
+      <th>Responsibility</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Prime</th>
+      <th class="status">Status</th>
+      <th class="actions">Actions</th>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let mandat of mandats; index as i">
+        <td>{{mandat.responsibility.libelle}}</td>
+        <td>{{mandat.startDate| date: 'MMM dd, yyyy'}}</td>
+        <td>{{mandat.endDate| date: 'MMM dd, yyyy'}}</td>
+        <td>{{mandat.prime}} DH</td>
+        <td class="status {{getStatus(mandat.startDate, mandat.endDate).color}}">
+          <span class="icon {{getStatus(mandat.startDate, mandat.endDate).icon}}"></span>
+          {{getStatus(mandat.startDate, mandat.endDate).status}}
+        </td>
+        <td class="actions">
+            <span class="fa fa-trash delete"
+                  [ngClass]="{'disable': getStatus(mandat.startDate, mandat.endDate).isFinished}"
+                  (click)="showDeleteBox(mandat.code, mandat.responsibility.libelle, i,getStatus(mandat.startDate, mandat.endDate).isFinished)">
+            </span>
+          <span class="fa fa-pen-to-square edit"
+                [ngClass]="{'disable': getStatus(mandat.startDate, mandat.endDate).isFinished}"
+                (click)="redirect(edit,mandat.code)"></span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<div #deleteMandatBox></div>

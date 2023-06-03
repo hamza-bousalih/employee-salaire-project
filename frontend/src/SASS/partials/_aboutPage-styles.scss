@@ -1,0 +1,100 @@
+/*==========================================================
+========== ABOUT PAGE STYLES ===============================
+==========================================================*/
+.aboutDetails {
+  --gap: 10px;
+  display: flex;
+  gap: var(--gap);
+  flex-wrap: wrap;
+  background-color: $clr-white;
+  padding: var(--gap);
+  @include border_radius(10px);
+  box-shadow: $box-shadow;
+  overflow: hidden;
+
+  .section {
+    flex: 1 250px;
+    padding: 10px;
+    @include border_radius(5px);
+    @include transition(200ms linear);
+
+    * {
+      white-space: nowrap;
+    }
+
+    h3 {
+      color: $clr-primary;
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      text-transform: capitalize;
+    }
+  }
+}
+
+table.none {
+  width: 100%;
+  background: transparent;
+  border: none;
+
+  tr:hover td {
+    background-color: rgba($clr-gray-300, 30%);
+  }
+
+  td {
+    padding: 5px;
+    border-bottom: 1px solid $clr-gray-300;
+    text-transform: capitalize;
+    width: 50%;
+
+    &:first-child {
+      color: $clr-gray-700;
+      padding-right: 40px;
+    }
+  }
+}
+
+.aboutEmployeePage {
+  section {
+    margin-block: 60px 20px;
+
+    &> :first-child {
+      display: flex;
+      justify-content: space-between;
+      .section-title {
+        width: 100%;
+        margin-bottom: 15px;
+        text-transform: capitalize;
+        font-size: 20px;
+        font-weight: 500;
+        color: $clr-white;
+        text-shadow: 0 0 10px rgba(#000, 30%);
+      }
+
+      span {
+        cursor: pointer;
+        color: $clr-blue;
+        font-weight: 400;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  table {
+    td.status{
+      width: fit-content;
+      padding-right: 0;
+
+      .icon {margin-right: 5px;}
+
+      @each $clr-name, $clr-val in $clrs {
+        &.#{$clr-name} {
+          color: $clr-val;
+        }
+      }
+    }
+  }
+}

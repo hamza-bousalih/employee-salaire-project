@@ -1,0 +1,22 @@
+/*==========================================================
+========== ALERT MESSAGE STYLES ============================
+==========================================================*/
+.alertMessage {
+  max-width: 80vw;
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  padding: 10px 30px 10px 15px;
+  @include border_radius(5px 0 0 5px);
+  text-transform: capitalize;
+  color: $clr-white;
+  box-shadow: 0 0 10px rgba(#000, 30%);
+  cursor: pointer;
+  @include animation(animateEnter 400ms ease-in-out forwards);
+
+  @each $class, $clr-val in $alertMessage-clrs {
+    &.#{$class} {
+      background-color: $clr-val;
+    }
+  }
+}

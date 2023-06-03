@@ -1,0 +1,23 @@
+<div class="boxContainer danger" (click)="destroy()"></div>
+<div class="popUpBox danger">
+  <h4>
+    Confirm Deleting
+    <span class="fa fa-xmark" (click)="destroy()"></span>
+  </h4>
+  <div>
+    <div class="form-group">
+      <label for="cin">Responsibility</label>
+      <input type="text" id="cin" readonly disabled
+             value="{{echelonLibelle}}">
+    </div>
+    <p class="warning-message">
+      <span class="fa-solid fa-triangle-exclamation"></span>
+      By deleting this echelon, you will delete all employees that have it!
+    </p>
+    <button class="button" (click)="delete()">
+      <span class="fa fa-user-slash"></span>
+      Delete
+    </button>
+  </div>
+</div>
+

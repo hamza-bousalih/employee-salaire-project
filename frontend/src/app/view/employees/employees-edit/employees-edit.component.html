@@ -1,0 +1,76 @@
+<div class="form-body">
+  <div class="info-group">
+    <h3 class="group-title">Personal Info</h3>
+    <div class="input">
+      <label for="cin">CIN</label>
+      <input type="text"
+             id="cin"
+             placeholder="P12345678"
+             [(ngModel)]="employee.cin"
+             (ngModelChange)="unsetNoValids('entite')"
+             [ngClass]="{'error': cinNotValid}">
+    </div>
+    <div class="input">
+      <label for="name">Name</label>
+      <input type="text"
+             id="name"
+             placeholder="Hamza"
+             [(ngModel)]="employee.nom">
+    </div>
+    <div class="input">
+      <label for="lastName">Last Name</label>
+      <input type="text"
+             id="lastName"
+             placeholder="Bousalih"
+             [(ngModel)]="employee.prenom">
+    </div>
+  </div>
+
+  <div class="info-group">
+    <h3 class="group-title">Contact Info</h3>
+    <div class="input">
+      <label for="email">Email</label>
+      <input type="text"
+             id="email"
+             placeholder="abc@example.com"
+             [(ngModel)]="employee.email">
+    </div>
+    <div class="input">
+      <label for="phone">Phone</label>
+      <input type="text"
+             id="phone"
+             placeholder="+212 13 45 67 890"
+             [(ngModel)]="employee.phone">
+    </div>
+  </div>
+
+  <div class="info-group">
+    <h3 class="group-title">Job Info</h3>
+    <div class="input">
+      <label for="echelon">Echelon</label>
+      <select id="echelon"
+              class="form-select"
+              [(ngModel)]="employeeEchelon.code"
+              (ngModelChange)="unsetNoValids('entite')"
+              [ngClass]="{'error': echelonNotValid}">
+        <option *ngFor="let echelon of echelons"
+                value="{{echelon.code}}" >
+          {{echelon.libelle}}</option>
+      </select>
+    </div>
+    <div class="input">
+      <label for="entite">Entite Administartif</label>
+      <select id="entite"
+              class="form-select"
+              [(ngModel)]="employeeEntite.code"
+              (ngModelChange)="unsetNoValids('entite')"
+              [ngClass]="{'error': entiteNotValid}">
+        <option *ngFor="let entite of entites"
+                value="{{entite.code}}" >
+          {{entite.libelle}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="send-btn" (click)="update(employeeCin)">Edit Employee</button>

@@ -1,0 +1,33 @@
+<section *ngIf="salaries.length != 0">
+  <div>
+    <h3 class="section-title">
+      Salaries: <small>{{salaries.length}} month{{salaries.length>1? 's': ''}}</small>
+    </h3>
+  </div>
+  <div class="table-container">
+    <table class="table">
+
+      <thead>
+      <th>Month</th>
+      <th>Echelon</th>
+      <th>Base Salary</th>
+      <th>Responsibility</th>
+      <th>Resp Prime</th>
+      <th>Salary</th>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let salary of salaries; index as i">
+        <td>{{salary.month | date: 'MMMM yyyy'}}</td>
+        <td>{{salary.employee.echelon.libelle}}</td>
+        <td>{{salary.salaireBase}}</td>
+        <td [ngClass]="{'emptyData': salary.responsibility == null}">
+          {{salary.responsibility ? salary.responsibility.libelle : '...'}}
+        </td>
+        <td>{{salary.responsibilityPrime}}</td>
+        <td>{{salary.primeGeneral}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

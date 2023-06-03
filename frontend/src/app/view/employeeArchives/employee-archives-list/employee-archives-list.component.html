@@ -1,0 +1,39 @@
+<div class="table-container" *ngIf="archives.length > 0">
+  <table class="table">
+    <thead>
+    <th>CIN</th>
+    <th>Name</th>
+    <th>LastName</th>
+    <th>Delete Date</th>
+    <th>Delete Raison</th>
+    <th class="actions">Remove</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let archive of archives; index as i">
+      <td>{{archive.cin}}</td>
+      <td>{{archive.nom}}</td>
+      <td>{{archive.prenom}}</td>
+      <td>{{archive.deleteDate | date: 'dd MMMM yyyy'}}</td>
+      <td>{{archive.deleteRaison}}</td>
+      <td class="actions">
+        <span class="fa fa-user-slash delete"
+              (click)="showDeleteBox(archive.code, archive.nom + ' ' + archive.prenom, i)"></span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<ng-template [ngIf]="archives.length == 0">
+  <div class="zeroFound">
+    <h4>{{randomEmoji}}</h4>
+    <h4 class="message">There is no archive</h4>
+  </div>
+</ng-template>
+
+
+<app-employee-archive-delete></app-employee-archive-delete>
+
+<div #deleteContainer></div>
+

@@ -1,0 +1,39 @@
+<div *ngIf="echelons.length > 0; then listContainer else notFound"></div>
+<ng-template #listContainer></ng-template>
+<div class="table-container" *ngIf="echelons.length > 0">
+  <table class="table">
+    <thead>
+    <th>Code</th>
+    <th>Libelle</th>
+    <th>Echelle</th>
+    <th>Delai</th>
+    <th>Prime</th>
+    <th class="actions">Actions</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let echelon of echelons; index as i">
+      <td>{{echelon.code}}</td>
+      <td>{{echelon.libelle}}</td>
+      <td>{{echelon.echelle?.libelle}}</td>
+      <td>{{echelon.delai}}</td>
+      <td>{{echelon.prime}} DH</td>
+      <td class="actions">
+        <span class="fa fa-pen-to-square edit" (click)="redirectTo('edit', echelon.code)"></span>
+        <span class="fa fa-trash delete" (click)="showDeleteBox(echelon.code, echelon.libelle,i)">
+            </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #notFound>
+  <div class="zeroFound">
+    <h4>{{randomEmoji}}</h4>
+    <h4 class="message">There is no echelons</h4>
+    <a class="action green" routerLink="add">
+      <span class="fa fa-user-plus icon"></span>
+      add echelons
+    </a>
+  </div>
+</ng-template>

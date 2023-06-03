@@ -1,0 +1,73 @@
+<div class="form-body mini-form">
+  <div class="info-group">
+    <div class="input">
+      <label for="libelle">Libelle</label>
+      <input type="text"
+             id="libelle"
+             placeholder="echelon ..."
+             [(ngModel)]="echelon.libelle"
+             (ngModelChange)="noValidToggle('libelle')"
+             [ngClass]="{'error': libelleNotValid}">
+    </div>
+    <div class="input">
+      <label for="delai">delai</label>
+      <input type="number"
+             id="delai"
+             placeholder="3 ans"
+             min="0"
+             [(ngModel)]="echelon.delai"
+             (ngModelChange)="noValidToggle('delai')"
+             [ngClass]="{'error': delaiNotValid}">
+    </div>
+    <div class="input">
+      <label for="prime">Prime</label>
+      <input type="number"
+             id="prime"
+             placeholder="1000.00 DH"
+             min="0"
+             [(ngModel)]="echelon.prime"
+             (ngModelChange)="noValidToggle('prime')"
+             [ngClass]="{'error': primeNotValid}">
+    </div>
+    <div class="input">
+      <label for="echelle">echelle</label>
+      <select id="echelle" class="form-select"
+              [disabled]="echelons.length == 0"
+              [(ngModel)]="echelle.code"
+              (ngModelChange)="noValidToggle('echelle')"
+              [ngClass]="{'error': echelleNotValid}">
+        <option *ngFor="let echelle of echelles"
+                value="{{echelle.code}}" >
+          {{echelle.libelle}}</option>
+      </select>
+    </div>
+    <div class="input">
+      <label for="nextEchelon">Next Echelon</label>
+      <select id="nextEchelon" class="form-select"
+              [disabled]="echelons.length == 0"
+              [(ngModel)]="nextEchelon.code"
+              (ngModelChange)="noValidToggle('nextEchelon')"
+              [ngClass]="{'error': nextEchelonNotValid}">
+        <option *ngFor="let echelon of echelons"
+                value="{{echelon.code}}" >
+          {{echelon.libelle}}</option>
+      </select>
+    </div>
+    <div class="input">
+      <label for="prevEchelon">prev Echelon</label>
+      <select id="prevEchelon" class="form-select"
+              [disabled]="echelles.length == 0"
+              [(ngModel)]="prevEchelon.code"
+              (ngModelChange)="noValidToggle('prevEchelon')"
+              [ngClass]="{'error': prevEchelonNotValid}">
+        <option *ngFor="let echelon of echelons"
+                value="{{echelon.code}}" >
+          {{echelon.libelle}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="send-btn" (click)="update()">
+  Edit
+</button>

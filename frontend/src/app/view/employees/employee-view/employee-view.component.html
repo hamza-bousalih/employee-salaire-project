@@ -1,0 +1,59 @@
+<div class="aboutDetails">
+  <div class="section">
+    <h3>{{employee.prenom + ' ' + employee.nom}}</h3>
+    <table class="none">
+      <tr>
+        <td>CIN</td>
+        <td>{{employee.cin}}</td>
+      </tr>
+      <tr>
+        <td>Phone</td>
+        <td>{{employee.phone? employee.phone : '...'}}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td style="text-transform: none">{{employee.email? employee.email : '...'}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>Echelon</h3>
+    <table class="none">
+      <tr>
+        <td>Code</td>
+        <td>{{employee.echelon?.code}}</td>
+      </tr>
+      <tr>
+        <td>Libelle</td>
+        <td>{{employee.echelon?.libelle}}</td>
+      </tr>
+      <tr>
+        <td>Echelle</td>
+        <td>{{employee.echelon?.echelle?.libelle}}</td>
+      </tr>
+      <tr>
+        <td>Grade</td>
+        <td>{{employee.echelon?.echelle?.grade?.libelle}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>Entite Administratif</h3>
+    <table class="none">
+      <tr>
+        <td>Code</td>
+        <td>{{employee.entiteAdministratif?.code}}</td>
+      </tr>
+      <tr>
+        <td>Libelle</td>
+        <td>{{employee.entiteAdministratif?.libelle}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<app-employee-mandats employeeCin="{{employeeCin}}"></app-employee-mandats>
+
+<app-employee-salaries employeeCin="{{employeeCin}}"></app-employee-salaries>

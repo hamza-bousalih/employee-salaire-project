@@ -1,0 +1,17 @@
+<div class="form-body mini-form">
+  <div class="info-group">
+    <div class="input">
+      <label for="libelle">Libelle</label>
+      <input type="text"
+             id="libelle"
+             placeholder="Echelle ..."
+             [(ngModel)]="grade.libelle"
+             (ngModelChange)="noValidToggle('libelle')"
+             [ngClass]="{'error': libelleNotValid}">
+    </div>
+  </div>
+</div>
+
+<button type="button" class="send-btn" (click)="update()">
+  Edit Grade
+</button>

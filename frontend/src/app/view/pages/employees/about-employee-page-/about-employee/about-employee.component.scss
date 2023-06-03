@@ -1,0 +1,52 @@
+/*==========================================================
+========== NAVIGATION STYLES ===============================
+==========================================================*/
+.navigation {
+  $actionNum: 4;
+
+  .actions {
+    @media (max-width: 940px) {
+      .action {
+        &.btn {
+          display: block;
+        }
+
+        &:not(.btn) {
+          display: none;
+          position: absolute;
+          right: calc(100% + 10px);
+          top: 0;
+          width: max-content;
+
+          box-shadow: 0 0 10px 7px rgba(#000, 15%);
+
+          @for $i from 2 through $actionNum {
+            &:nth-child(#{$i}) {
+              top: calc(#{($i - 1) * 100%} + #{($i - 1) * 10px} );
+            }
+          }
+
+          &:hover {
+            box-shadow: 0 0 10px rgba(#000, 10%);
+          }
+        }
+      }
+
+      &.active {
+        .action:not(.btn) {
+          display: block;
+          opacity: 0;
+          animation: animateActionsEnter 200ms ease-in forwards;
+
+          $init: 100ms;
+          @for $i from 2 through $actionNum {
+            &:nth-child(#{$i}) {
+              animation-delay: $init;
+              $init: $init+ 150ms;
+            }
+          }
+        }
+      }
+    }
+  }
+}

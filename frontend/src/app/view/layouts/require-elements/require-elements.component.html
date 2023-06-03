@@ -1,0 +1,7 @@
+<ng-template [ngIf]="requireElements.length > 0">
+  <button
+    *ngFor="let el of requireElements"
+    class="required-element" [routerLink]="el.link">
+    {{el.libelle}}
+  </button>
+</ng-template>

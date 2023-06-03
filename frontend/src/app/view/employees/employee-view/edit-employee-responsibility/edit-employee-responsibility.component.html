@@ -1,0 +1,39 @@
+<div class="form-body mini-form">
+  <div class="info-group">
+    <div class="input">
+      <label for="cin">Employee CIN</label>
+      <input type="text" id="cin" disabled
+             [ngModel]="employee.cin"
+             [ngClass]="{'error': employeeNotValid}">
+    </div>
+    <div class="input">
+      <label for="responsibility">responsibility</label>
+      <select id="responsibility" class="form-select"
+              [disabled]="responsibilities.length == 0"
+              [(ngModel)]="responsibility.code"
+              (ngModelChange)="noValidToggle('responsibility')"
+              [ngClass]="{'error': responsibilityNotValid}">
+        <option *ngFor="let responsibility of responsibilities"
+                value="{{responsibility.code}}" >
+          {{responsibility.libelle}}</option>
+      </select>
+    </div>
+    <div class="inline-inputs">
+      <div class="input">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate"
+               [(ngModel)]="mandat.startDate"
+               [ngClass]="{'error': dateNotValid}">
+      </div>
+      <div class="input">
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate"
+               [(ngModel)]="mandat.endDate"
+               [ngClass]="{'error': dateNotValid}">
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="send-btn" (click)="update()">Set Responsibility</button>
+

@@ -1,0 +1,50 @@
+/*==========================================================
+========== ANIMATIONS ======================================
+==========================================================*/
+@keyframes animateEnter {
+  from {
+    translate: 100% 0;
+    opacity: 0;
+  }
+  to {
+    translate: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes movingToRight {
+  from {
+    left: -30%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes animateActionsEnter {
+  from {
+    translate: -60px;
+    opacity: 0;
+  }
+  70% {
+    translate: -20px;
+    opacity: .9;
+  }
+  to {
+    translate: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animateDropDown {
+  0% {
+    transform: rotateX(90deg);
+    transform-origin: top;
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}

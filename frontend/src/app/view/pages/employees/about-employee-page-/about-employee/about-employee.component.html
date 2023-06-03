@@ -1,0 +1,39 @@
+<div class="navigation">
+  <div class="title"> About Employee <span></span></div>
+
+  <div class="actions" id="actions" [class]="{'active': showNavigation}">
+
+    <a class="action green" (click)="showCalcSalaryBox()">
+      <span class="fa fa-calendar-plus icon"></span>
+      Calc Salary
+    </a>
+
+    <a class="action green" (click)="redirect(setResponsibilityPage,null)">
+      <span class="fa fa-calendar-plus icon"></span>
+      Set Responsibility
+    </a>
+
+    <a class="action blue" (click)="redirect(editEmployeePage, employeeCin)">
+      <span class="fa fa-user-pen icon"></span>
+      Edit
+    </a>
+
+    <a class="action red" (click)="showDeleteEmployeeBox()">
+      <span class="fa fa-user-slash icon"></span>
+      Delete
+    </a>
+
+    <div class="action btn"
+         id="action-btn"
+         (click)="navigationToggle()">
+      <span class="fa fa-list-dots"></span>
+    </div>
+
+  </div>
+</div>
+
+<div class="aboutEmployeePage">
+  <app-employee-view employeeCin="{{employeeCin}}"></app-employee-view>
+</div>
+
+<div #deleteContainer></div>

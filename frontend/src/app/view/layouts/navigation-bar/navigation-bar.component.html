@@ -1,0 +1,23 @@
+<div class="navigation">
+  <div class="title">{{title}}<span></span></div>
+
+  <div *ngIf="addActions"
+       class="actions" id="actions"
+       [class]="{'active': showNavigation}">
+
+    <a *ngFor="let item of navigationEls"
+       class="action {{item.color}}"
+       [routerLink]="toNavigate ? item.link: null">
+      <span class="{{item.icon}} icon"></span>
+      {{item.libelle}}
+    </a>
+
+    <div *ngIf="addActions"
+         class="action btn"
+         id="action-btn"
+         (click)="navigationToggle()">
+      <span class="fa fa-list-dots"></span>
+    </div>
+
+  </div>
+</div>

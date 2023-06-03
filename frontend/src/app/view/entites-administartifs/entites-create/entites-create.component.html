@@ -1,0 +1,33 @@
+<div class="form-body mini-form">
+  <div class="info-group">
+    <div class="input">
+      <label for="libelle">Libelle</label>
+      <input type="text"
+             id="libelle"
+             placeholder="Entite Administratif ..."
+             [(ngModel)]="entite.libelle"
+             (ngModelChange)="noValidToggle('libelle')"
+             [ngClass]="{'error': libelleNotValid}">
+    </div>
+    <div class="input">
+      <label for="chef">Chef CIN</label>
+      <input type="text"
+             id="chef"
+             list="employees"
+             placeholder="P123456789"
+             [(ngModel)]="entiteChef.cin"
+             (ngModelChange)="noValidToggle('chef')"
+             [ngClass]="{'error': chefNotValid}">
+      <datalist id="employees">
+        <option *ngFor="let employee of employees"
+                value="{{employee.cin}}">
+          {{employee.cin}}
+        </option>
+      </datalist>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="send-btn" (click)="save()">
+  <i class="fa fa-plus"></i> Add
+</button>

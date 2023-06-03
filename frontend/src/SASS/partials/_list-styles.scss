@@ -1,0 +1,109 @@
+/*==========================================================
+========== Lists STYLES ====================================
+==========================================================*/
+.table-container {
+  width: 100%;
+  overflow: auto;
+  box-shadow: 0 0 10px rgba(#000, 20%);
+
+  scrollbar-width: thin;
+  scrollbar-color: $clr-gray-700 $clr-gray-300;
+}
+
+.table {
+  text-transform: capitalize;
+  background-color: $clr-white;
+  width: 100%;
+  min-width: 750px;
+  border-collapse: collapse;
+
+  th {
+    background-color: $clr-table-gray;
+    font-weight: 500;
+  }
+
+  th, td {
+    padding: 15px 20px 15px 10px;
+    text-align: left;
+    border-bottom: 1px solid $clr-gray-300;
+    border-right: 1px solid $clr-gray-300;
+    white-space: nowrap;
+    @include transition(300ms);
+
+    &.actions {
+      padding-right: 10px;
+    }
+
+    &.pointer:hover {
+      text-decoration: underline;
+    }
+  }
+
+  td.emptyData {
+    text-align: center;
+  }
+
+  tr {
+    &:nth-child(even) {
+      background-color: $clr-gray-300;
+    }
+    &:hover td{
+      background-color: darken($clr-table-gray,10%);
+    }
+  }
+
+  .actions {
+    text-align: center;
+
+    span {
+      cursor: pointer;
+
+      &:first-child {
+        margin-right: 20px;
+      }
+    }
+
+    .delete {
+      color: $clr-red;
+    }
+
+    .edit {
+      color: $clr-blue;
+    }
+
+    .disable {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.zeroFound {
+  position: absolute;
+  left: 50%; top: 50%;
+  translate: -50% -50%;
+  padding: 10px 20px 10px 15px;
+  @include border_radius(0 5px 5px 0);
+  color: $clr-black;
+  font-size: 25px;
+  text-align: center;
+  text-transform: capitalize;
+
+  h4:not(.message) {
+    font-size: 40px;
+  }
+
+  .message {
+    margin-block: 10px 15px;
+  }
+
+  .action {
+    background-color: $clr-white;
+    padding: 10px;text-wrap: none;
+    font-size: 14px;
+    cursor: pointer;
+    @include border_radius(5px);
+    @include addClrs;
+    @include multi_transition(.5s ease, color .5s .2s ease);
+  }
+}

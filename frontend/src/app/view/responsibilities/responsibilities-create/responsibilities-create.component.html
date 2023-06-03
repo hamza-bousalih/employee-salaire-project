@@ -1,0 +1,47 @@
+<div class="form-body mini-form">
+  <div class="info-group">
+    <div class="input">
+      <label for="libelle">Libelle</label>
+      <input type="text"
+             id="libelle"
+             placeholder="Responsibility ..."
+             [(ngModel)]="responsibility.libelle"
+             (ngModelChange)="noValidToggle('libelle')"
+             [ngClass]="{'error': libelleNotValid}">
+    </div>
+    <div class="input">
+      <label for="prime">Prime</label>
+      <input type="number"
+             id="prime"
+             placeholder="1000.00"
+             min="0"
+             [(ngModel)]="responsibility.prime"
+             (ngModelChange)="noValidToggle('prime')"
+             [ngClass]="{'error': primeNotValid}">
+    </div>
+    <div class="input">
+      <label for="echelon">Echelon</label>
+      <select id="echelon" class="form-select"
+              [disabled]="echelons.length == 0"
+              [(ngModel)]="respEchelon.code"
+              (ngModelChange)="noValidToggle('echelon')"
+              [ngClass]="{'error': echelonNotValid}">
+        <option *ngFor="let echelon of echelons"
+                value="{{echelon.code}}" >
+          {{echelon.libelle}}</option>
+      </select>
+  </div>
+</div>
+</div>
+
+<button type="button" class="send-btn" (click)="save()">
+  <i class="fa fa-plus"></i> Add
+</button>
+
+<ng-template [ngIf]="requireElements.length > 0">
+  <button
+    *ngFor="let el of requireElements"
+    class="required-element" [routerLink]="el.link">
+    {{el.libelle}}
+  </button>
+</ng-template>

@@ -1,0 +1,39 @@
+<div *ngIf="employees.length > 0; then listContainer else notFound"></div>
+<ng-template #listContainer></ng-template>
+<div class="table-container" *ngIf="employees.length > 0">
+  <table class="table">
+    <thead>
+    <th>CIN</th>
+    <th>Name</th>
+    <th>LastName</th>
+    <th>Echelon</th>
+    <th>Entite Administartif</th>
+    <th class="actions">Actions</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees; index as i">
+      <td class="pointer" (click)="redirectTo(aboutEmployeePage, employee.cin)">{{employee.cin}}</td>
+      <td>{{employee.nom}}</td>
+      <td>{{employee.prenom}}</td>
+      <td>{{employee.echelon.libelle}}</td>
+      <td>{{employee.entiteAdministratif.libelle}}</td>
+      <td class="actions">
+            <span class="fa fa-user-pen edit" (click)="redirectTo(editEmployeePage, employee.cin)"></span>
+        <span class="fa fa-user-slash delete" (click)="showDeleteBox(employee.cin,i)">
+            </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #notFound>
+  <div class="zeroFound">
+    <h4>{{randomEmoji}}</h4>
+    <h4 class="message">There is no employee</h4>
+    <a class="action green" routerLink="{{addEmployeePage}}">
+      <span class="fa fa-user-plus icon"></span>
+      add employee
+    </a>
+  </div>
+</ng-template>

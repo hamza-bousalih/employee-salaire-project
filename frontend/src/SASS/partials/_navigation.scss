@@ -1,0 +1,119 @@
+/*==========================================================
+========== NAVIGATION STYLES ===============================
+==========================================================*/
+.navigation {
+  $actionNum: 4;
+
+  text-transform: capitalize;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .title {
+    width: fit-content;
+    position: relative;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 40px;
+    color: $clr-black;
+
+    span {
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 110%;
+      height: 2px;
+      @include border-radius(20px);
+      background-color: $clr-white;
+      filter: drop-shadow(0 0 10px rgba(#000, 50%));
+      overflow: hidden;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0; left: -30%;
+        width: 30%;
+        height: 100%;
+        @include border-radius(inherit);
+        background-color: $clr-black;
+        @include animation(movingToRight ease-in-out 2s infinite)
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+    position: relative;
+
+    .action {
+      background-color: $clr-white;
+      padding: 12px 20px;
+      @include border-radius(7px);
+      box-shadow: $box-shadow;
+      text-transform: capitalize;
+      white-space: nowrap;
+
+      @include multi_transition(.5s ease, color .5s .2s ease);
+
+      @include addClrs();
+
+      &:not(.btn) {
+        span {
+          margin-right: 10px;
+        }
+      }
+
+      &.btn {
+        display: none;
+      }
+    }
+
+    @include break_point(650px) {
+      .action {
+        &.btn {
+          display: block;
+        }
+
+        &:not(.btn) {
+          display: none;
+          position: absolute;
+          right: calc(100% + 10px);
+          top: 0;
+          width: max-content;
+
+          box-shadow: 0 0 10px 7px rgba(#000, 15%);
+
+          @for $i from 2 through $actionNum {
+            &:nth-child(#{$i}) {
+              top: calc(#{($i - 1) * 100%} + #{($i - 1) * 10px} );
+            }
+          }
+
+          &:hover {
+            box-shadow: 0 0 10px rgba(#000, 10%);
+          }
+        }
+      }
+
+      &.active {
+        .action:not(.btn) {
+          display: block;
+          opacity: 0;
+          animation: animateActionsEnter 200ms ease-in forwards;
+
+          $init: 100ms;
+          @for $i from 2 through $actionNum {
+            &:nth-child(#{$i}) {
+              animation-delay: $init;
+              $init: $init+ 150ms;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+<div class="navigation">
+  <div class="title"> Employees Salaries <span></span></div>
+
+  <div class="actions" id="actions" [class]="{'active': showNavigation}">
+
+    <a class="action green" (click)="showCalcSalaryBox(salaryMonth)">
+      <span class="fa fa-calendar-plus icon"></span>
+      Calc Salary
+    </a>
+
+    <a class="action gray" (click)="showSearchSalaryBox(salaryMonth)">
+      <span class="fa fa-calendar icon"></span>
+      {{salaryMonth | date: 'MMM yyyy'}}
+    </a>
+
+    <div class="action btn"
+         id="action-btn"
+         (click)="navigationToggle()">
+      <span class="fa fa-list-dots"></span>
+    </div>
+
+  </div>
+</div>
+
+<app-salary-list></app-salary-list>
+
+<div #calcSalaryBox></div>
+
+<div #searchSalaryBox></div>

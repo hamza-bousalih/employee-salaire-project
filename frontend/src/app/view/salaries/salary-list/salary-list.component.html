@@ -1,0 +1,42 @@
+<div class="table-container" *ngIf="salaries.length > 0">
+  <table  class="table">
+
+    <thead>
+    <th>CIN</th>
+    <th>Name</th>
+    <th>LastName</th>
+    <th>Echelon</th>
+    <th>Base Salary</th>
+    <th>Responsibilities</th>
+    <th>Resp Prime</th>
+    <th>Salary</th>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let salary of salaries; index as i">
+      <td class="pointer" [routerLink]="[aboutEmployeePage, salary.employee.cin]">{{salary.employee.cin}}</td>
+      <td>{{salary.employee.nom}}</td>
+      <td>{{salary.employee.prenom}}</td>
+      <td>{{salary.employee.echelon.libelle}}</td>
+      <td>{{salary.salaireBase}} DH</td>
+      <td [ngClass]="{'emptyData': salary.responsibility == null}">
+        {{salary.responsibility ? salary.responsibility.libelle : '...'}}
+      </td>
+      <td>{{salary.responsibilityPrime}} DH</td>
+      <td>{{salary.primeGeneral}} DH</td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<ng-container *ngIf="salaries.length == 0">
+  <div class="zeroFound">
+    <h4>{{randomEmoji}}</h4>
+    <h4 class="message">no salary in '{{salaryMonth | date: 'MMMM yyyy'}}'</h4>
+    <a class="action green" (click)="calcSalary(salaryMonth)">
+      <span class="fa fa-calendar-plus icon"></span>
+      Calc Salary
+    </a>
+  </div>
+</ng-container>

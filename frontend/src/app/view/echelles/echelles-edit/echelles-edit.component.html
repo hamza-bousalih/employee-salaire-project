@@ -1,0 +1,29 @@
+<div class="form-body mini-form">
+  <div class="info-group">
+    <div class="input">
+      <label for="libelle">Libelle</label>
+      <input type="text"
+             id="libelle"
+             placeholder="Echelle ..."
+             [(ngModel)]="echelle.libelle"
+             (ngModelChange)="noValidToggle('libelle')"
+             [ngClass]="{'error': libelleNotValid}">
+    </div>
+    <div class="input">
+      <label for="grade">Grade</label>
+      <select id="grade" class="form-select"
+              [disabled]="grades.length == 0"
+              [(ngModel)]="respGrade.code"
+              (ngModelChange)="noValidToggle('grade')"
+              [ngClass]="{'error': gradeNotValid}">
+        <option *ngFor="let grade of grades"
+                value="{{grade.code}}" >
+          {{grade.libelle}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="send-btn" (click)="update()">
+  Edit
+</button>

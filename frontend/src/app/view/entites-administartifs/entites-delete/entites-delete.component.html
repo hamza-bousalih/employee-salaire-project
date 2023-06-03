@@ -1,0 +1,24 @@
+<div class="boxContainer danger" (click)="destroy()"></div>
+<div class="popUpBox danger">
+  <h4>
+    Confirm Deleting
+    <span class="fa fa-xmark" (click)="destroy()"></span>
+  </h4>
+  <div>
+    <div class="form-group">
+      <label for="cin">Entite Administratif</label>
+      <input type="text" id="cin" readonly disabled
+             value="{{entiteLibelle}}">
+    </div>
+    <div class="form-group inline">
+      <input type="checkbox" id="force"
+             [(ngModel)]="force">
+      <label for="force">delete its employees</label>
+    </div>
+    <button class="button" (click)="delete(entiteCode,force,entiteIndex)">
+      <span class="fa fa-user-slash"></span>
+      Delete
+    </button>
+  </div>
+</div>
+

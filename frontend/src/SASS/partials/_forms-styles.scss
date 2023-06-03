@@ -1,0 +1,62 @@
+/*==========================================================
+========== FORMS STYLES ====================================
+==========================================================*/
+.form-body {
+  background-color: $clr-gray-900;
+  padding: 10px 20px;
+  @include border_radius(10px);
+  box-shadow: 0 0 10px rgba(#fff, 20%);
+  display: grid;
+  gap: 30px;
+  grid-template-columns:  repeat(auto-fit, minmax(250px, 1fr));
+
+  &.mini-form {
+    max-width: min(500px, 95%)
+  }
+
+  .info-group {
+    .group-title {
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: rgba(#fff,40%);
+      text-shadow: 0 0 5px rgba(#000, 40%);
+    }
+    .input {
+      margin-bottom: 10px;
+      label {
+        display: block;
+        text-transform: capitalize;
+        margin-bottom: 7px;
+        color: $clr-white;
+        text-shadow: 0 0 5px rgba(#000, 30%);
+      }
+
+      input,select {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        padding: 10px 20px;
+        @include border_radius(5px);
+        font-family: $mainFont;
+        box-shadow: 0 0 10px rgba(#000, 20%);
+
+        &:focus {
+          box-shadow: none;
+          &:not(.error) {
+            border-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+.send-btn {
+  min-width: 100px;
+  background-color: $clr-blue;
+  color: $clr-white;
+  padding: 7px 15px;
+  @include border_radius(5px);
+  margin-top: 15px;
+  box-shadow: 0 0 10px rgba(#000, 20%);
+}

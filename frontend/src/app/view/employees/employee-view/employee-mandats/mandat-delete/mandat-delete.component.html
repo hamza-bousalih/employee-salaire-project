@@ -1,0 +1,20 @@
+<div class="boxContainer danger" (click)="hideBox()"></div>
+<div class="popUpBox danger">
+  <h4>
+    Confirm Deleting
+    <span class="fa fa-xmark" (click)="hideBox()"></span>
+  </h4>
+  <div>
+    <div class="form-group">
+      <label for="cin">Responsibility</label>
+      <input type="text" id="cin"
+             readonly disabled
+             value="{{targetedResp}}">
+    </div>
+    <button class="button" (click)="delete(targetedCode,mandatIndex)">
+      <span class="fa fa-user-slash"></span>
+      Delete
+    </button>
+  </div>
+</div>
+
